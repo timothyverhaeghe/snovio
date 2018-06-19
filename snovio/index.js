@@ -51,9 +51,8 @@ const domainSearch = (domain, cb) => {
         },
       }, (err, res, body) => {
         if (err) console.log(err);
-        if (res && res.status_code === 200) {
-          const json = JSON.parse(body);
-          cb(false, json);
+        if (res && res.statusCode === 200) {
+          cb(false, body);
         } else {
           console.log('CALL FAILED. ERRORCODE: ', res.status_code);
           console.log(body);
