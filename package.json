@@ -1,0 +1,26 @@
+{
+  "name": "snovio",
+  "version": "1.0.0",
+  "description": "NodeJS implemenation for Snov.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/timothyverhaeghe/snovio.git"
+  },
+  "author": "Timothy Verhaeghe <me@timothyverhaeghe.com> (timothyverhaeghe.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timothyverhaeghe/snovio/issues"
+  },
+  "homepage": "https://github.com/timothyverhaeghe/snovio#readme",
+  "dependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-import": "^2.12.0",
+    "request": "^2.87.0"
+  }
+}
