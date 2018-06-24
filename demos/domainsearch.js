@@ -1,7 +1,9 @@
 const credits = require('./credentials'); // My credits, gitignored.
 const snovio = require('../snovio')(credits.appId, credits.appSecret);
 
-snovio.domainSearch('taglayer.com', (err, data) => {
+snovio.domainSearch({
+  domain: 'Google.com',
+}, (err, data) => {
   if (err) console.log(err);
   if (data) {
     console.log(data);
