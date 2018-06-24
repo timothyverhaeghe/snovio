@@ -37,32 +37,37 @@ const authenticate = (cb) => {
 };
 
 
-const domainSearch = (domain, cb) => {
-  authenticate((err, accessToken) => {
-    if (accessToken) {
-      request.post({
-        url: 'https://app.snov.io/restapi/get-domain-emails-with-info',
-        json: {
-          access_token: accessToken,
-          domain,
-          type: 'all', // all, personal or generic
-          limit: 100,
-          // offset
-        },
-      }, (err, res, body) => {
-        if (err) console.log(err);
-        if (res && res.statusCode === 200) {
-          cb(false, body);
-        } else {
-          console.log('CALL FAILED. ERRORCODE: ', res.status_code);
-          console.log(body);
-          cb('call failed', false);
-        }
-      });
-    } else {
-      console.log('AUTHENTICATION FAILED');
-    }
-  });
+const domainSearch = (config, cb) => {
+  if (config && config.domain) {
+    authenticate((err, accessToken) => {
+      if (accessToken) {
+        request.post({
+          url: 'https://app.snov.io/restapi/get-domain-emails-with-info',
+          json: {
+            access_token: accessToken,
+            domain: config.domain,
+            type: config.type || 'all', // all, personal or generic
+            limit: config.limit || 100,
+            // offset
+          },
+        }, (err, res, body) => {
+          if (err) console.log(err);
+          if (res && res.statusCode === 200) {
+            cb(false, body);
+          } else {
+            console.log('[SNOVIO_LOG] CALL FAILED. ERRORCODE: ', res.status_code);
+            console.log(body);
+            cb('call failed', false);
+          }
+        });
+      } else {
+        console.log('[SNOVIO_LOG] AUTHENTICATION FAILED');
+      }
+    });
+  } else {
+    console.log('[SNOVIO_LOG] INCORRECT INPUT. DOMAIN IS MISSING.');
+    cb('Incorrect input', false);
+  }
 };
 
 

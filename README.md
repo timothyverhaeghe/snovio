@@ -16,7 +16,9 @@ Find all persons working for a specific company (by domain)
 ```js
 const Snovio = require('snovio')(appId, appSecret);
 
-Snovio.domainSearch('google.com', (err, data) => {
+Snovio.domainSearch({
+  domain: 'google.com'
+}, (err, data) => {
   if (err) console.log(err);
   if (data) {
     console.log(data);

@@ -1,6 +1,6 @@
 {
   "name": "snovio",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "NodeJS implemenation for Snov.io",
   "main": "./snovio/index.js",
   "scripts": {
